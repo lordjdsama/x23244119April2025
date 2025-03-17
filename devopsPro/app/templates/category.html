@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Category{% endblock title %}
+
+{% block main-content %}
+    <div class="container my-5">
+        <div class="row">
+            <!-- Sidebar with Categories -->
+            <div class="col-sm-3">
+                <div class="list-group">
+                    {% for val in title %}
+                        <a href="{% url 'category-title' val.title %}" class="list-group-item list-group-item-action" aria-current="true">
+                            {{val.title}}
+                        </a>
+                    {% endfor %} 
+                </div>
+            </div>
+            
+            <!-- Product Listing -->
+            <div class="col-sm-9">
+                <div class="row">
+                    {% for prod in product %}
+                    <div class="col-md-4 mb-4 text-center">  
+                        <a href="{% url 'product-detail' prod.id %}" class="btn d-block">
+                            <img src="{{ prod.product_image.url }}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
+                            <div class="fw-bold mt-2">{{ prod.title }}</div>
+                            <div class="fw-bold text-danger">
+                                Rs. {{ prod.discounted_price }} /-
+                                <small class="text-decoration-line-through text-muted">{{ prod.course_price }}</small>
+                            </div>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock main-content %}

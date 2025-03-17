@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Home page {% endblock title %}
+
+
+<!--banner begins-->
+
+{% block banner_slider %}
+
+<div id="carouselExample" class="carousel slide">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="{% static 'images/DW.jpg' %}" class="d-block w-100" alt="banner">
+        </div>
+        <div class="carousel-item">
+            <img src="{% static 'images/DW.jpg' %}" class="d-block w-100" alt="banner">
+        </div>
+        <div class="carousel-item">
+            <img src="{% static 'images/DW.jpg' %}" class="d-block w-100" alt="banner">
+        </div>
+        <div class="carousel-item">
+            <img src="{% static 'images/DW.jpg' %}" class="d-block w-100" alt="banner">
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+{% endblock banner_slider %}
+
+<!--banner ends-->
+
+{% block information %}
+
+<div class="container">
+    <div class="row bg-dark text-center p-5 text-light border-bottom-shadow">
+        <h1>Offers</h1>
+        <small class="fs-5">
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+            sed diam nonummy nibh euismod tincidunt ut laoreet dolore
+            magna aliquam erat volutpat. Ut wisi enim ad minim veniam,
+            quis nostrud exerci tation ullamcorper suscipit lobortis nisl
+            ut aliquip ex ea commodo consequat. Duis autem vel eum iriure
+            dolor in hendrerit in vulputate velit esse molestie consequat,
+            vel illum dolore eu feugiat nulla facilisis at vero eros et
+            accumsan et iusto odio dignissim qui blandit praesent luptatum
+            zzril delenit augue duis dolore te feugait nulla facilisi.
+
+        </small>
+    </div>
+
+</div>
+
+{% endblock information %}
+{% block main-content %}
+
+<div class="container">
+    <h2 class="text-center">Courses</h2>
+    <br /><br />
+    <div class="row"> 
+        <div class="col-md-4 col-sm-6 mi-go wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.6s">
+            <div class="godnesssec smbg">
+                <a href="{% url 'category' 'ST' %}">
+                    <div class="godnessseccont text-center">
+                        <img src="{% static 'images/product/guitar.jpeg' %}" class="img-fluid" alt="Guitar">
+                        <p class="guitar">String</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <div class="col-md-4 col-sm-6 mi-go wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.6s">
+            <div class="godnesssec drum">
+                <a href="{% url 'category' 'RT' %}">
+                    <div class="godnessseccont text-center">
+                        <img src="{% static 'images/product/drum.jpeg' %}" class="img-fluid" alt="Drums">
+                        <p class="drum">Rhythm</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-sm-6 mi-go wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.6s">
+            <div class="godnesssec keyboard">
+                <a href="{% url 'category' 'VO' %}">
+                    <div class="godnessseccont text-center">
+                        <img src="{% static 'images/product/keyboard.jpg' %}" class="img-fluid" alt="Keyboard">
+                        <p class="keyboard">Vocal</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <br /><br /><br />
+    <div class="row"> 
+        <div class="col-md-4 col-sm-6 mi-go wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.6s">
+            <div class="godnesssec music smbg">
+                <a href="{% url 'category' 'CO' %}">
+                    <div class="godnessseccont text-center">
+                        <img src="{% static 'images/product/production.jpg' %}" class="img-fluid" alt="composition">
+                        <p class="music">Music Composition</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <div class="col-md-4 col-sm-6 mi-go wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.6s">
+            <div class="godnesssec prod">
+                <a href="{% url 'category' 'PR' %}">
+                    <div class="godnessseccont text-center">
+                        <img src="{% static 'images/product/composition.jpg' %}" class="img-fluid" alt="Production">
+                        <p class="prod">Music Production</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-sm-6 mi-go wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.6s">
+            <div class="godnesssec manage">
+                <a href="{% url 'category' 'MG' %}">
+                    <div class="godnessseccont text-center">
+                        <img src="{% static 'images/product/manager.jpg' %}" class="img-fluid" alt="Management">
+                        <p class="milkpro">Management</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br /><br /><br />
+{% endblock main-content %}

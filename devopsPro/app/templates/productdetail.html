@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ product.title }} - Details{% endblock title %}
+
+{% block main-content %}
+<div class="container mt-5">
+    <div class="row align-items-center">
+        <!-- Product Image Section -->
+        <div class="col-lg-6 text-center">
+            <img src="{{ product.product_image.url }}" class="img-fluid rounded shadow" alt="{{ product.title }}" style="max-height: 400px; object-fit: cover;">
+        </div>
+
+        <!-- Product Details Section -->
+        <div class="col-lg-6">
+            <h1 class="fw-bold" style="font-family: Georgia; font-size: 40px;">
+                {{ product.title }}
+            </h1>
+            
+            <div class="mt-3">
+                <span class="text-muted text-decoration-line-through fs-5">Rs. {{ product.course_price }}/-</span>
+                <h3 class="text-danger fw-bold">Rs. {{ product.discounted_price }}/-</h3>
+            </div>
+
+            <hr>
+
+            <h4 class="mt-4">About Course</h4>
+            <ul class="fs-5" style="font-family: Rajdhani;">
+                <li>{{ product.description }}</li>
+            </ul>
+            <h4 class="mt-4">Module Outcome</h4>
+            <ul class="fs-5" style="font-family: Rajdhani;">
+                <li>{{ product.composition }}</li>
+            </ul>
+            <h4 class="mt-4">Opportunities in</h4>
+            <ul class="fs-5" style="font-family: Rajdhani;">
+                <li>{{ product.career_in }}</li>
+            </ul>
+            
+
+            <!-- Buttons -->
+            <div class="mt-4">
+                <button type="button" class="btn btn-danger btn-lg me-2">
+                    <i class="fas fa-shopping-cart"></i> Add to Cart
+                </button>
+                <a href="#" class="btn btn-dark btn-lg">
+                    <i class="fas fa-bolt"></i> Buy Now
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock main-content %}
