@@ -15,14 +15,17 @@ urlpatterns = [
     path('product-detail/<int:pk>', views.ProductDetail.as_view(), name="product-detail"),
     path('profile/', views.ProfileView.as_view(), name="profile"),
     path('address/', views.address, name="address"),
-    path('updateaddress/', views.updateaddress.as_view(), name="updateaddress"),
+    path('addtocart/', views.addtocart, name="addtocart"),
+    path('cart/', views.cart, name="cart"),
+    path('checkout/', views.cart, name="checkout"),
+    path('updateaddress/<int:pk>', views.updateaddress.as_view(), name="updateaddress"),
     
     # login authentication
     
     path('registration/', views.CustomerRegistrationView.as_view(), name="registration"),
      
     path('login/', auth_view.LoginView.as_view(template_name='login.html', authentication_form=LoginForm), name="login"),
-    
+    path('logout/', auth_view.LogoutView.as_view(next_page='login'), name="logout"),
     path('passwordreset/', auth_view.PasswordResetView.as_view(template_name='passwordreset.html', form_class=MyPasswordReset), name="passwordreset"),
     
     

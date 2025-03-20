@@ -3,9 +3,11 @@ from urllib import request
 from django.shortcuts import render
 from django.shortcuts import HttpResponse
 from django.views import View
-from . models import Product, Customer
+from . models import Product, Customer, Cart
 from . forms import CustomerRegistrationForm, ProfileForm
 from django.contrib import messages
+from django.shortcuts import get_object_or_404, redirect
+
 
 # Create your views here.
 def home (request):
@@ -74,12 +76,55 @@ def address(request):
     add = Customer.objects.filter(user=request.user)
     return render(request, 'address.html', locals())
     
-    
+ 
 class updateaddress(View):
-      def get(self, request):
-        form = ProfileForm()
-        return render(request, 'updateaddress.html', locals())
-      def post(self,request):
-        form = ProfileForm(request.POST)
-        return render(request, 'updateaddress.html', locals())
-     
+    def get(self, request, *args, **kwargs): 
+        pk = kwargs.get('pk')
+        add = get_object_or_404(Customer, pk=pk) 
+        form = ProfileForm(instance=add)  
+        return render(request, 'updateaddress.html', {'form': form, 'add': add})  
+
+    def post(self, request, *args, **kwargs): 
+        pk = kwargs.get('pk')
+        add = get_object_or_404(Customer, pk=pk) 
+        form = ProfileForm(request.POST, instance=add)
+
+        if form.is_valid():
+            form.save()  
+            messages.success(request, "Address Updated Successfully")
+            return redirect('address')  
+
+        messages.warning(request, "Invalid Input")
+        return render(request, 'updateaddress.html', {'form': form, 'add': add})  
+
+
+
+def addtocart(request):
+    user = request.user
+    productid = request.GET.get('prod_id')
+    product = get_object_or_404(Product, id=productid)  # ✅ Prevent errors
+    Cart(user=user, product=product).save()
+    return redirect("cart")  # ✅ Redirect to cart page
+
+def cart(request):
+    user = request.user
+    cart = Cart.objects.filter(user=user)
+    amount = 0
+    for p in cart:
+        value = p.quantity * p.product.discounted_price
+        amount = amount + value
+    totalamount = amount + 40
+    
+    return render(request, 'addtocart.html', locals())
+    
+# def addtocart(request):
+#     user = request.user
+#     productid = request.GET.get('prod_id')
+#     product = Product.objects.get(id=productid)
+#     Cart(user=user,product=product).save()
+#     return redirect("cart")
+    
+# def cart(request):
+#     user = request.user
+#     cart = Cart.objects.filter(user=user)
+#     return render(request, 'addtocart.html', locals())

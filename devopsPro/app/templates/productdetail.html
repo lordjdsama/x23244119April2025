@@ -39,10 +39,13 @@
 
             <!-- Buttons -->
             <div class="mt-4">
-                <button type="button" class="btn btn-danger btn-lg me-2">
+                <form action="/addtocart" class="d-inline">
+                    <input type="hidden" name="prod_id" value="{{ product.id }}"/>
+                    <button type="submit" class="btn btn-danger btn-lg me-2">
                     <i class="fas fa-shopping-cart"></i> Add to Cart
-                </button>
-                <a href="#" class="btn btn-dark btn-lg">
+                    </button>
+                </form>
+                <a href="{% url 'cart' %}" class="btn btn-dark btn-lg">
                     <i class="fas fa-bolt"></i> Buy Now
                 </a>
             </div>
