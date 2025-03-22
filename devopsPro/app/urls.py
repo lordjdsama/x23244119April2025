@@ -15,10 +15,16 @@ urlpatterns = [
     path('product-detail/<int:pk>', views.ProductDetail.as_view(), name="product-detail"),
     path('profile/', views.ProfileView.as_view(), name="profile"),
     path('address/', views.address, name="address"),
+    path('updateaddress/<int:pk>', views.updateaddress.as_view(), name="updateaddress"),
+    
     path('addtocart/', views.addtocart, name="addtocart"),
     path('cart/', views.cart, name="cart"),
-    path('checkout/', views.cart, name="checkout"),
-    path('updateaddress/<int:pk>', views.updateaddress.as_view(), name="updateaddress"),
+    
+    path('checkout/', views.checkout, name="checkout"),
+    path('pluscart/', views.plus_cart, name="pluscart"),
+    path('minuscart/', views.minus_cart, name="minuscart"),
+    path('removecart/', views.remove_cart, name='removecart'),
+
     
     # login authentication
     
