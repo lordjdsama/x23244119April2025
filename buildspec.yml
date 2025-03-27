@@ -1,0 +1,24 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.9
+    commands:
+      - echo "Installing dependencies..."
+      - pip install --upgrade pip
+      - pip install -r ./requirements.txt pylint
+
+  pre_build:
+    commands:
+      - echo "Checking Python version..."
+      - python --version
+      - echo "Linting project..."
+      - pylint *.py || true
+      - pylint --disable=E1101,C0103,C0303,C0301,R0903,E0307 devopsPro/*.py || true
+      - pylint --disable=C0303,E1101,R0903,E0307,C0301,W0613,R1705,E0602,W0622,R0914,R1710,W0718,E1131 app/*.py || true
+
+artifacts:
+  base-directory: .
+  files:
+    - '**/*'
