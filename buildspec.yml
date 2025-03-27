@@ -14,8 +14,8 @@ phases:
     commands:
       - echo "Running Python version:"
       - python --version
-      - echo "Skipping root lint (no .py files)"
-      # - pylint $CODEBUILD_SRC_DIR/*.py
+      - echo "Skipping root directory linting"
+      # Removed: pylint $CODEBUILD_SRC_DIR/*.py
       - echo "Linting devopsPro"
       - pylint --disable=E1101,C0103,C0303,C0301,R0903,E0307 devopsPro/*.py || true
       - echo "Linting app"
