@@ -5,6 +5,7 @@ phases:
     runtime-versions:
       python: 3.9
     commands:
+      - pip install -r app/requirements.txt pylint
       - pip install --upgrade pip
    
 
