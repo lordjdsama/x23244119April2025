@@ -24,6 +24,8 @@ urlpatterns = [
     path('pluscart/', views.plus_cart, name="pluscart"),
     path('minuscart/', views.minus_cart, name="minuscart"),
     path('removecart/', views.remove_cart, name='removecart'),
+    path('cart/update/<int:pk>/<str:action>/', views.update_cart_quantity, name='update_cart_quantity'),
+
 
     
     # login authentication

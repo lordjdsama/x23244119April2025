@@ -8,6 +8,8 @@ from . forms import CustomerRegistrationForm, ProfileForm
 from django.contrib import messages
 from django.shortcuts import get_object_or_404, redirect
 from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
 
 
 
@@ -179,4 +181,17 @@ def remove_cart(request):
         }
         return JsonResponse(data)
  
- 
+def update_cart_quantity(request, pk, action):
+    cart_item = get_object_or_404(Cart, pk=pk, user=request.user)
+
+    if action == 'increase':
+        cart_item.quantity += 1
+        cart_item.save()
+    elif action == 'decrease':
+        if cart_item.quantity > 1:
+            cart_item.quantity -= 1
+            cart_item.save()
+    elif action == 'remove':
+        cart_item.delete()
+
+    return redirect('cart')
