@@ -7,21 +7,20 @@ phases:
     commands:
       - echo "Upgrading pip..."
       - pip install --upgrade pip
-      - echo "Installing dependencies..."
+      - echo "Installing requirements and pylint..."
       - pip install -r requirements.txt pylint
 
   pre_build:
     commands:
-      - echo "Running Python version:"
+      - echo "Checking Python version..."
       - python --version
       - echo "Linting root files..."
       - pylint *.py || true
-      - echo "Linting devopsPro..."
+      - echo "Linting project files..."
       - pylint --disable=E1101,C0103,C0303,C0301,R0903,E0307 devopsPro/*.py || true
-      - echo "Linting app..."
       - pylint --disable=C0303,E1101,R0903,E0307,C0301,W0613,R1705,E0602,W0622,R0914,R1710,W0718,E1131 app/*.py || true
 
 artifacts:
-  base-directory: app
+  base-directory: .
   files:
     - '**/*'
