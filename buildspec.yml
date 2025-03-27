@@ -14,8 +14,7 @@ phases:
     commands:
       - echo "Running Python version:"
       - python --version
-      - echo "Skipping root-level pylint as no .py files exist"
-      # Commented the line below due to no root .py files
+      - echo "Skipping root lint (no .py files)"
       # - pylint $CODEBUILD_SRC_DIR/*.py
       - echo "Linting devopsPro"
       - pylint --disable=E1101,C0103,C0303,C0301,R0903,E0307 devopsPro/*.py || true
