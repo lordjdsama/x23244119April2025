@@ -10,7 +10,7 @@ phases:
     commands:
       - echo "Checking Python version..."
       - python --version
-      - python manage.py collectstatic --noinput
+      
 
 artifacts:
   base-directory: .
