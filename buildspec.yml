@@ -14,7 +14,10 @@ phases:
     commands:
       - echo "Checking Python version..."
       - python --version
-      - echo "Running Pylint..."
+      - echo "Running Pylint for devopsPro..."
+      - pylint devopsPro/*.py || true
+      - echo "Running Pylint for app..."
+      - pylint app/*.py || true
 
 artifacts:
   base-directory: .
