@@ -25,15 +25,7 @@ SECRET_KEY = '-%d0weobe044$iqntn#81+hp%d!o9_d!g$9^z-bq*_))$q4_a_'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-
-    'localhost',
-    '127.0.0.1',
-    '172.31.12.95',               # EC2 instance private IP
-    '52.16.151.198',              # Public IP (if available)
-    'x23244119finaldevops-env.eba-npewdagi.eu-west-1.elasticbeanstalk.com',  # Your EB domain
-    '.elasticbeanstalk.com',      # Wildcard match for flexibility
-    '487e71b9f3fb4ace8657a94285033242.vfs.cloud9.eu-west-1.amazonaws.com']
+ALLOWED_HOSTS = ['x23244119finaldevops-env.eba-npewdagi.eu-west-1.elasticbeanstalk.com','487e71b9f3fb4ace8657a94285033242.vfs.cloud9.eu-west-1.amazonaws.com']
 
 
 # Application definition
