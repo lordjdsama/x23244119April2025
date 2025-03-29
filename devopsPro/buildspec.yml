@@ -17,12 +17,12 @@ artifacts:
   files:
     - '**/*'
 
-env:
-sonar-scanner \
-  -Dsonar.organization=x23244119 \
-  -Dsonar.projectKey=lordjdsama_x23244119April2025 \
-  -Dsonar.sources=. \
-  -Dsonar.host.url=https://sonarcloud.io
+# env:
+# sonar-scanner \
+#   -Dsonar.organization=x23244119 \
+#   -Dsonar.projectKey=lordjdsama_x23244119April2025 \
+#   -Dsonar.sources=. \
+#   -Dsonar.host.url=https://sonarcloud.io
   
 env:
     secrets-manager:
