@@ -8,15 +8,20 @@ phases:
       - echo "Upgrading pip..."
       - pip install --upgrade pip
       - echo "Installing dependencies..."
-      - pip install -r requirements.txt
+      - pip install -r requirements.txt pylint
 
   pre_build:
     commands:
       - echo "Checking Python version..."
       - python --version
+      - echo "Linting manage.py..."
+      - pylint manage.py || true
+      - echo "Linting devopsPro/..."
+      - pylint devopsPro/*.py || true
+      - echo "Linting app/..."
+      - pylint app/*.py || true
 
 artifacts:
   base-directory: .
   files:
     - '**/*'
-
