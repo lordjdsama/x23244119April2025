@@ -1,1 +1,1 @@
-web: gunicorn devpsPro.wsgi:application
+web: gunicorn devopsPro.wsgi
